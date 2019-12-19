@@ -1,21 +1,23 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-
+{% include "sharedlayout.html" %}
 <style>
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
     }
 
-    th, td {
+    th, td {    
         padding: 15px;
     }
 </style>
 
 <div class="container">
+
+
     <h1>this is the todo history page.</h1>
-    <button type="submit" class="btn btn-danger">Test</button>
+    <!--<button type="submit" class="btn btn-danger">Test</button>-->
     <table style="width 100">
 
         <tr>
