@@ -33,3 +33,6 @@ def historyTodo(request):
     all_todo_items=TodoItem.objects.all()
     return render(request,'todohistory.html',
         {'all_items':all_todo_items})
+
+def teamContributions(request):
+        return render(request, 'teamContributions.html')

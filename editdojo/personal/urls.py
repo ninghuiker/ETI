@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 #from hello.views import myView
-from todo.views import todoView , addTodo , deleteTodo, historyTodo
+from todo.views import todoView , addTodo , deleteTodo, historyTodo, teamContributions
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     path('addTodo/',addTodo),
     path('deleteTodo/<int:todo_id>/',deleteTodo),
     path('todo/history/', historyTodo),
+    path('teamContributions/', teamContributions)
 ]
