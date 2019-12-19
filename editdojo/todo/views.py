@@ -24,7 +24,12 @@ def addTodo(request):
 
 def deleteTodo(request, todo_id):
     item_to_delete = TodoItem.objects.get(id=todo_id)
-    item_to_delete.delete()
+    item_to_delete.status = False
+    item_to_delete.save()
     return HttpResponseRedirect('/todo/')
     
-    
+def historyTodo(request):
+    #print(request.user.get_username())
+    all_todo_items=TodoItem.objects.all()
+    return render(request,'todohistory.html',
+        {'all_items':all_todo_items})

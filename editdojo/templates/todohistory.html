@@ -1,0 +1,47 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
+
+<div class="container">
+    <h1>this is the todo history page.</h1>
+    <button type="submit" class="btn btn-danger">Test</button>
+    <table style="width 100">
+
+        <tr>
+            <th>Content</th>
+            <th>DateTime</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            {% for todo_item in all_items %}
+            <td>
+                {{ todo_item.content }}
+            </td>
+            <td>
+                {{ todo_item.date_created }}
+            </td>
+            <td>
+                {% if todo_item.status == False%}
+                Existing
+                {% else %}
+                Deleted
+                {% endif %}
+
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div> 
