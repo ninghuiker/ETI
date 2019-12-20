@@ -6,15 +6,20 @@ from .models import TodoItem
 
 
 def todoView(request):
-    all_todo_items=TodoItem.objects.all()
+    print(TodoItem.objects.all()[0].status)
+    all_todo_items=TodoItem.objects.filter(author=request.user)#.filter(status == True)
+    filtered_items = all_todo_items.filter(status = True)
     return render(request,'todo.html',
-        {'all_items':all_todo_items})
+        {'all_items':filtered_items})
 
 def addTodo(request):
     #find the attribute with the name content
     #c = request.POST['content']
     #new_item = TodoItem(content = c)
-    new_item = TodoItem(content = request.POST['content'])
+    new_item = TodoItem()
+    new_item.content = request.POST['content']
+    print(request.user.get_username())
+    new_item.author = request.user.get_username()
     new_item.save()
     return HttpResponseRedirect('/todo/')
     
