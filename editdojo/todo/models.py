@@ -4,7 +4,6 @@ class TodoItem(models.Model):
     content = models.TextField()
     date_created = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
-    #date_created
-    #author
+    author = models.CharField(max_length=30, null = True)
     
 # Create your models here.
