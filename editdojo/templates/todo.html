@@ -1,26 +1,36 @@
-<h1>this is the todo page.</h1>
+{% extends 'base.html' %}
 
-<!--<ul>
-  <li>temporary todo item A</li>
-  <li>temporary todo item B</li>
- </ul> -->
- 
- <ul>
-    {% for todo_item in all_items %}
-      <li>{{ todo_item.content }}
-	  <!-- Delete Function -->
-	    <form action="/deleteTodo/{{todo_item.id}}/"
-			  style="display: inline;"
-			  method="post">{% csrf_token %}
-		   <input type="submit" value="Delete"/>
-		 </form>   
-	  </li>
-	{% endfor %}
-</ul>
+{% block title %}Todo{% endblock %}
 
-<form action="/addTodo/" method="post">{% csrf_token %}
-  <input type="text" name="content"/>
-  <input type="submit" value="Add"/>
- </form>
- 
- 
+{% block content %}
+<div class="container">
+    <h1>Todo</h1>
+    <h5>View all your current and active todo items.</h5>
+    <!--<ul>
+      <li>temporary todo item A</li>
+      <li>temporary todo item B</li>
+     </ul> -->
+
+    <ul>
+        {% for todo_item in all_items %}
+        <li>
+            {{ todo_item.content }}
+            <!-- Delete Function -->
+            <form action="/deleteTodo/{{todo_item.id}}/"
+                  style="display: inline;"
+                  method="post">
+                {% csrf_token %}
+                <input type="submit" value="Delete" />
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <form action="/addTodo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="content" />
+        <input type="submit" value="Add" />
+    </form>
+
+</div>
+{% endblock %}
