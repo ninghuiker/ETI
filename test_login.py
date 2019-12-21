@@ -8,8 +8,9 @@ from selenium.webdriver.common.keys import Keys
 def test_navigation_login_page():
     driver = webdriver.Chrome()
     driver.maximize_window()
-    driver.get("http://localhost:8000/accounts/login/")
-    assert 'Login' == driver.title
+    driver.get('http://localhost:8000')
+    driver.find_element_by_xpath("/html/body/nav/a[2]").click()
+    assert "http://localhost:8000/accounts/login/" == driver.current_url
     
     driver.close()
     
@@ -21,8 +22,8 @@ def test_admin_login_empty():
     driver.maximize_window()
     driver.get("http://localhost:8000/accounts/login/")
     driver.find_element_by_name("username").send_keys("")
-    driver.find_element_by_name("password").send_keys("passwordtest123")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_name("password").send_keys("")
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     assert 'Login' == driver.title
     
     driver.close()
@@ -34,9 +35,9 @@ def test_admin_login_empty_password():
     driver = webdriver.Chrome()
     driver.maximize_window()
     driver.get("http://localhost:8000/accounts/login/")
-    driver.find_element_by_name("username").send_keys("")
-    driver.find_element_by_name("password").send_keys("passwordtest123")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_name("username").send_keys("peter")
+    driver.find_element_by_name("password").send_keys("")
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     assert 'Login' == driver.title
     
     driver.close()
@@ -50,9 +51,9 @@ def test_admin_login_empty_username():
     driver.get("http://localhost:8000/accounts/login/")
     driver.find_element_by_name("username").send_keys("")
     driver.find_element_by_name("password").send_keys("passwordtest123")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     assert 'Login' == driver.title
-    
+
     driver.close()
 
 test_admin_login_empty_username()
@@ -62,9 +63,9 @@ def test_admin_login_wrong_password():
     driver = webdriver.Chrome()
     driver.maximize_window()
     driver.get("http://localhost:8000/accounts/login/")
-    driver.find_element_by_name("username").send_keys("peter")
+    driver.find_element_by_name("username").send_keys("finer")
     driver.find_element_by_name("password").send_keys("%&$*#")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     error = driver.find_element_by_class_name("errorlist").text
     assert 'Login' == driver.title
     assert 'Please enter a correct username and password. Note that both fields may be case-sensitive.' == error
@@ -80,7 +81,7 @@ def test_admin_login_wrong_credentials():
     driver.get("http://localhost:8000/accounts/login/")
     driver.find_element_by_name("username").send_keys("%^&*()%$#@#& *&*&$_+++++&&&&?????/ #*")
     driver.find_element_by_name("password").send_keys("%%%%%")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     error = driver.find_element_by_class_name("errorlist").text
     assert 'Login' == driver.title
     assert 'Please enter a correct username and password. Note that both fields may be case-sensitive.' == error
@@ -94,9 +95,9 @@ def test_admin_valid_login():
     driver = webdriver.Chrome()
     driver.maximize_window()
     driver.get("http://localhost:8000/accounts/login/")
-    driver.find_element_by_name("username").send_keys("peter")
+    driver.find_element_by_name("username").send_keys("finer")
     driver.find_element_by_name("password").send_keys("passwordtest123")
-    driver.find_element_by_xpath("/html/body/main/form/button").click()
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     assert 'Home' == driver.title
     
     driver.close()
