@@ -24,10 +24,7 @@
                 {{ todo_item.date_created }}
             </td>
             <td>
-                {{ todo_item.author }}
-            </td>
-            <td>
-                {% if todo_item.status == False%}
+                {% if todo_item.status == True%}
                 Existing
                 {% else %}
                 Deleted
