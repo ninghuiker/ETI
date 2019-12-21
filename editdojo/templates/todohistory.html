@@ -1,28 +1,17 @@
-{% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% include "sharedlayout.html" %}
-<style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+{% extends 'base.html' %}
 
-    th, td {    
-        padding: 15px;
-    }
-</style>
+{% block title %}Todo History{% endblock %}
 
+{% block content %}
 <div class="container">
-
-
-    <h1>this is the todo history page.</h1>
+    <h1>Todo History</h1>
+    <h5>View all todo items from anyone</h5> 
     <!--<button type="submit" class="btn btn-danger">Test</button>-->
     <table style="width 100">
-
         <tr>
             <th>Content</th>
             <th>DateTime</th>
+            <th>Author</th>
             <th>Status</th>
         </tr>
 
@@ -47,3 +36,4 @@
 
     </table>
 </div> 
+{% endblock %}

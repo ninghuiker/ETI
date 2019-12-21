@@ -10,7 +10,7 @@ def todoView(request):
     all_todo_items=TodoItem.objects.filter(author=request.user)#.filter(status == True)
     filtered_items = all_todo_items.filter(status = True)
     return render(request,'todo.html',
-        {'all_items':filtered_items})
+        {'all_items':filtered_items, 'todo': 'active'})
 
 def addTodo(request):
     #find the attribute with the name content
@@ -37,7 +37,8 @@ def historyTodo(request):
     #print(request.user.get_username())
     all_todo_items=TodoItem.objects.all()
     return render(request,'todohistory.html',
-        {'all_items':all_todo_items})
+        {'all_items':all_todo_items, 'todo_history': 'active'})
 
 def teamContributions(request):
-        return render(request, 'teamContributions.html')
+    context = {"team_contribution": "active"}
+    return render(request, 'teamContributions.html', context)
