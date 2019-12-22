@@ -11,14 +11,19 @@ import select as Select
 #driver.implicitly_wait(30)
 
 
+
 # Test Case Scenario 1
 def test_navigation_login_page():
     driver = webdriver.Chrome()
     driver.maximize_window()
     #Navigate to the login page
     driver.get("http://localhost:8000/accounts/login/")
-    assert 'Login' == driver.title
+    driver.find_element_by_name("username").send_keys("admin")
+    driver.find_element_by_name("password").send_keys("admin")
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
+    assert 'Home' == driver.title
     driver.close()
+
 
 # Test Case Scenario 2
 def test_navigation_registration_page():
