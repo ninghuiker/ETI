@@ -8,8 +8,11 @@ from selenium.webdriver.common.keys import Keys
 def test_navigation_team_contributions_page():
     driver = webdriver.Chrome()
     driver.maximize_window()
-    #Navigate to homepage
-    driver.get('http://localhost:8000')
+    #Login 
+    driver.get("http://localhost:8000/accounts/login/")
+    driver.find_element_by_name("username").send_keys("finer")
+    driver.find_element_by_name("password").send_keys("passwordtest123")
+    driver.find_element_by_xpath("/html/body/div/main/form/button").click()
     #Navigate to team contributions page
     driver.find_element_by_xpath("/html/body/nav/div/ul/li[3]/a").click()
     assert "http://localhost:8000/teamContributions/" == driver.current_url
