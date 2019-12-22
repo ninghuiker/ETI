@@ -25,9 +25,9 @@ def test_navigation_registration_page():
 def test_create_user_successful():
     driver = webdriver.Chrome()
     driver.get("http://127.0.0.1:8000/accounts/signup/")
-    driver.find_element_by_name("username").send_keys("Koi2356@@")
-    driver.find_element_by_name("password1").send_keys("123456abcde989f")
-    driver.find_element_by_name("password2").send_keys("123456abcde989f")
+    driver.find_element_by_name("username").send_keys("Asaudias845")
+    driver.find_element_by_name("password1").send_keys("123465asdxxyuoih")
+    driver.find_element_by_name("password2").send_keys("123465asdxxyuoih")
     time.sleep(2)
     driver.find_element_by_xpath("/html/body/div/main/form/button").click()  
     assert 'Login' == driver.title
