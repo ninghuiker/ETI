@@ -3,6 +3,7 @@
 {% block title %}Todo{% endblock %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="container">
     <h1>Todo</h1>
     <h5>View all your current and active todo items.</h5>
@@ -33,4 +34,8 @@
     </form>
 
 </div>
+{% else %}
+  <p>You are not logged in.</p>
+  <a href="{% url 'login' %}">Login Here!</a>
+{% endif %}
 {% endblock %}

@@ -3,11 +3,7 @@
 {% block title %}Team Contribution{% endblock %}
 
 {% block content %}
-<!--<ul>
-  <li>temporary todo item A</li>
-  <li>temporary todo item B</li>
- </ul> -->
-
+{% if user.is_authenticated %}
 <div class="container">
 
     <h1>Team Contributions</h1>
@@ -91,5 +87,8 @@
     <br>
 
 </div>
-
+{% else %}
+  <p>You are not logged in.</p>
+  <a href="{% url 'login' %}">Login Here!</a>
+{% endif %}
 {% endblock %}
